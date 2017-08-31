@@ -1,6 +1,7 @@
 package stramApi;
 
 import java.util.*;  
+import java.util.stream.Collectors;
 class Produc{  
     int id;  
     String name;  
@@ -34,6 +35,31 @@ public class StreamApiMaxMin {
         .max((p1,p2)->p1.price<p2.price?1:-1).get();
         
         System.out.println(pPrice2.price);
+        
+       long count= productsList.stream()
+                .filter(p->p.price<30000)
+                .count();
+        
+        System.out.println(count);
+        
+        
+        Set<Float> productPriceList =   
+                productsList.stream()  
+                .filter(p->p.price < 30000)   
+                .map(p->p.price)  
+                .collect(Collectors.toSet());   
+            System.out.println(productPriceList);  
+
+              
+         Map<Integer,String> productPriceMap =   
+                productsList.stream()  
+                .collect(Collectors.toMap(p->p.id, p->p.name));  
+                  
+            System.out.println(productPriceMap); 
+            
+            
+            
+                
     }  
 
 }  
