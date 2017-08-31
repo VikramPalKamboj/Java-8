@@ -57,8 +57,15 @@ public class StreamApiMaxMin {
                   
             System.out.println(productPriceMap); 
             
-            
-            
+        
+        Double average = productsList.stream()  
+                .collect(Collectors.averagingDouble(p->p.price));  
+        System.out.println("Average price is: "+average); 
+   
+        
+        Long noOfElements = productsList.stream()  
+                .collect(Collectors.counting());  
+        System.out.println("Total elements : "+noOfElements);  
                 
     }  
 
